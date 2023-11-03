@@ -1,10 +1,7 @@
 import mongoose from "mongoose";
-
 import chatSchema from "./chat-model.js";
 
-const schema = mongoose.Schema;
-
-const userSchema = new schema({
+const userSchema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: true,
@@ -18,7 +15,7 @@ const userSchema = new schema({
 		type: String,
 		required: true,
 	},
-    chats:[ chatSchema ]
+	chats: [chatSchema],
 });
 
-export default mongoose.model("User", userSchema)
+export default mongoose.model("User", userSchema);

@@ -1,10 +1,7 @@
 import mongoose from "mongoose";
-
 import { randomUUID } from "crypto";
 
-const schema = mongoose.Schema;
-
-const chatSchema = new schema({
+const chatSchema = new mongoose.Schema({
 	id: {
 		type: String,
 		default: randomUUID(),
@@ -19,4 +16,4 @@ const chatSchema = new schema({
 	},
 });
 
-export default mongoose.model("Chat", chatSchema);
+export default chatSchema;
