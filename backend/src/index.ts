@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
 import userRoutes from "./routes/user-routes.js";
 import chatRoutes from "./routes/chat-routes.js";
@@ -11,21 +13,11 @@ config();
 
 const app = express();
 
-app.use((req, res, next) => {
-	res.setHeader("Access-Control-Allow-Origin", "*");
-	res.setHeader(
-		"Access-Control-Allow-Headers",
-		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
-	);
-	res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-	res.header("default-src", "none");
-
-	next();
-});
-
 // Middlewares
-app.use(express.json());
 
+app.use(cors());
+app.use(express.json());
+app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(morgan("dev")); // for development
 
 // routes
