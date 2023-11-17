@@ -1,0 +1,15 @@
+.parent {
+	display: flex;
+	margin-right: "auto";
+	align-items: "center";
+	gap: "15px";
+}
+
+/* .logo{
+    height: 30px;
+    width: 30px;
+} */
+
+.span{
+    font-size: 20px;
+}
