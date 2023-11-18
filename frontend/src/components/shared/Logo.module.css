@@ -3,12 +3,30 @@
 	margin-right: "auto";
 	align-items: "center";
 	gap: "15px";
+    width: 100%;
 }
 
-/* .logo{
-    height: 30px;
-    width: 30px;
-} */
+.section1{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 1%;
+
+}
+
+.section2{
+    width: 80%;
+
+}
+
+.logo_p{
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+
+}
 
 .span{
     font-size: 20px;

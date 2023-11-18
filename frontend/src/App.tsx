@@ -6,12 +6,14 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Chat from "./pages/Chat";
- 
+
+import styles from './App.module.css'
+
 function App() {
 	return (
 		<div>
 			<Header />
-			<main>
+			<main className={styles.routes}>
                 <Routes>
                     <Route path="/" element={<Home/>} />
                     <Route path="/login" element={<Login/>} />

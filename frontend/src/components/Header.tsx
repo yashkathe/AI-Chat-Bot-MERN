@@ -1,15 +1,15 @@
 import React from "react";
-import { AppBar, Toolbar } from "@mui/material";
 import Logo from "./shared/Logo";
+
+import styles from './Header.module.css'
 
 const Header = () => {
 	return (
-		<AppBar
-			sx={{ bgcolor: "transparent", position: "static", boxShadow: "none" }}>
-			<Toolbar sx={{ display: "flex" }}>
+		<div className={styles.parent}>
+			<div>
                 <Logo/>
-            </Toolbar>
-		</AppBar>
+            </div>
+		</div>
 	);
 };
 
