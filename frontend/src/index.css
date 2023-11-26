@@ -13,3 +13,14 @@ body {
 	color: white;
 	font-family: "Roboto Slab", serif;
 }
+
+a {
+    color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+    color: hover;
+}

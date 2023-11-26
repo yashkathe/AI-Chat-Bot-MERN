@@ -1,14 +1,36 @@
-import React from "react";
 import Logo from "./shared/Logo";
 
-import styles from './Header.module.css'
+import styles from "./Header.module.css";
+import { useAuth } from "../context/context";
+import NavigationLink from "./shared/NavigationLink";
 
 const Header = () => {
+	const auth = useAuth();
+
+	let links;
+
+	if (auth?.isLoggedIn) {
+		links = (
+			<>
+				<NavigationLink to='/chat' text='Go To Chat' />
+				<NavigationLink to='/' text='Logout' onClick={auth.logout} />
+			</>
+		);
+	} else {
+		links = (
+			<>
+				<NavigationLink to='/login' text='Login'></NavigationLink>
+				<NavigationLink to='/signup' text='SignUp'></NavigationLink>
+			</>
+		);
+	}
+
 	return (
 		<div className={styles.parent}>
 			<div>
-                <Logo/>
-            </div>
+				<Logo />
+			</div>
+			<div>{links}</div>
 		</div>
 	);
 };

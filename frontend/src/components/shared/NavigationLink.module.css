@@ -1,0 +1,19 @@
+.link {
+	margin: 0 .5%;
+	font-size: 1.2rem;
+    padding: 4px 12px ;
+    border-radius: 10px;
+    background-color: #00fffbb9;
+    color: #05101c;
+    letter-spacing: 1px;
+}
+
+.pending {
+	height: 100%;
+	width: auto;
+    color: #05101c;
+}
+
+.active {
+	text-decoration: underline !important;
+}
