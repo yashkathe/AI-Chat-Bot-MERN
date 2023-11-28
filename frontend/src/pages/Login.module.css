@@ -1,0 +1,54 @@
+.parent {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	min-height: 93vh;
+}
+
+.parent > div:nth-child(1) {
+	display: flex;
+	align-items: center;
+	width: 50%;
+}
+
+.parent > div:nth-child(2) {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.parent > div:nth-child(2) > h2 {
+	font-size: 2.2rem;
+}
+
+.parent > div:nth-child(2) > p {
+	font-style: italic;
+    font-size: 1.1rem;
+}
+
+.parent > div:nth-child(2) > p > a {
+    color: #00fffbb0;
+}
+
+.parent > div:nth-child(2) > p > a:hover {
+	color: #00fffbdc;
+}
+
+.form {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	margin: 2vh 0;
+}
+
+.auth_label {
+	margin: 2%;
+}

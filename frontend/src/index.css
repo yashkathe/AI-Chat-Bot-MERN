@@ -15,12 +15,28 @@ body {
 }
 
 a {
-    color: inherit;
+	color: inherit;
 	text-decoration: none;
 }
 
 a:hover {
 	text-decoration: none;
 	cursor: pointer;
-    color: hover;
+	color: hover;
+}
+
+input {
+	/* Reset the default input styles */
+	appearance: none;
+	border: 1px solid #ccc;
+	padding: 8px;
+	margin: 4px 0;
+	font-size: inherit;
+}
+
+input:active,
+input:focus {
+	/* Optional: Reset additional active/focus styles */
+	outline: none;
+	box-shadow: none;
 }
