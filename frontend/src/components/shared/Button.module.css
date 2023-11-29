@@ -1,0 +1,11 @@
+.button{
+    width: 100%;
+}
+
+.button > button{
+    max-width: 100%;
+}
+
+.button > button:hover{
+    cursor: pointer;
+}

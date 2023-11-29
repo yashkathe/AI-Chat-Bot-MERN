@@ -12,17 +12,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 1%;
 
 }
 
 .section2{
     width: 80%;
-
-}
+    display: flex;
+    align-items: center;
+    }
 
 .logo_p{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     font-weight: 800;
 

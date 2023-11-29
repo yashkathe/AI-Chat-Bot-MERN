@@ -28,11 +28,11 @@
 
 .parent > div:nth-child(2) > p {
 	font-style: italic;
-    font-size: 1.1rem;
+	font-size: 1.1rem;
 }
 
 .parent > div:nth-child(2) > p > a {
-    color: #00fffbb0;
+	color: #00fffbb0;
 }
 
 .parent > div:nth-child(2) > p > a:hover {
@@ -51,4 +51,22 @@
 
 .auth_label {
 	margin: 2%;
+}
+
+.button{
+    box-sizing: border-box;
+}
+
+.button > button {
+    border-radius: 10px;
+    height: 2.6rem;
+    border: 0;
+	width: 100%;
+	background-color: #7476ca;
+    margin-top: 1.2rem;
+    font-size: 1rem;
+}
+
+.button > button:hover {
+	background-color: #6365c7;
 }

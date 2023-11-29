@@ -10,11 +10,12 @@ const Logo = () => {
 				<Link to={"/"}>
 					<img src={logo} alt='logo' className={styles.logo} />
 				</Link>
+			</section>
+			<section className={styles.section2}>
 				<p className={styles.logo_p}>
-					<span className={styles.span}>MERN</span>-GPT
+					<span className={styles.span}>MERN-GPT</span>
 				</p>
 			</section>
-			<section className={styles.section2}></section>
 		</div>
 	);
 };

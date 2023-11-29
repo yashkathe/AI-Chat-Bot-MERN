@@ -4,8 +4,9 @@ import bot2 from "/page-photos/robot-2.png";
 
 import PageImage from "../components/auth/PageImage";
 import FormLabel from "../components/auth/FormLabel";
+import Button from "../components/shared/Button";
 
-import styles from "./Login.module.css";
+import styles from "./AuthForm.module.css";
 
 const Login = () => {
 	return (
@@ -31,7 +32,7 @@ const Login = () => {
 						label='E-Mail'
 						value=''
 						onChange={() => {}}
-                        inputPH="name@example.com"
+						inputPH='name@example.com'
 					/>
 
 					<FormLabel
@@ -45,7 +46,13 @@ const Login = () => {
 						label='Password'
 						value=''
 						onChange={() => {}}
-                        inputPH="Password"
+						inputPH='Password'
+					/>
+
+					<Button
+						buttonLabel='Login'
+						type='submit'
+						className={styles.button}
 					/>
 				</div>
 				<p>

@@ -14,11 +14,15 @@
 }
 
 .parent > div:nth-child(1){
-    width: 15%;
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .parent > div:nth-child(2){
-    width: 85%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center;
