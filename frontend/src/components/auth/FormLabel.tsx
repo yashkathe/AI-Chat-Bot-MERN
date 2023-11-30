@@ -11,10 +11,11 @@ type Props = {
 	required: boolean;
 	maxLength: number;
 	minLength: number;
-	value: string;
+	value?: string;
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 	inputPH?: string;
 	labelPH?: string;
+    name:string
 };
 
 const FormLabel = (props: Props) => {
@@ -26,6 +27,7 @@ const FormLabel = (props: Props) => {
 			<input
 				type={props.type}
 				id={props.id}
+                name={props.name}
 				required={props.required}
 				maxLength={props.maxLength}
 				minLength={props.minLength}

@@ -23,8 +23,9 @@ const Signup = () => {
 				<div className={styles.form}>
 					<FormLabel
 						className={styles.auth_label}
-						htmlFor='name'
-						id='name'
+						htmlFor='username'
+						id='username'
+                        name='username'
 						type='text'
 						required={true}
 						maxLength={25}
@@ -39,6 +40,7 @@ const Signup = () => {
 						className={styles.auth_label}
 						htmlFor='email'
 						id='email'
+                        name='email'
 						type='text'
 						required={true}
 						maxLength={20}
@@ -52,6 +54,7 @@ const Signup = () => {
 					<FormLabel
 						className={styles.auth_label}
 						htmlFor='Password'
+                        name='password'
 						id='password'
 						type='password'
 						required={true}
@@ -67,6 +70,7 @@ const Signup = () => {
 						className={styles.auth_label}
 						htmlFor='Confirm-Password'
 						id='confirm-password'
+                        name='confirm-password'
 						type='password'
 						required={true}
 						maxLength={16}
