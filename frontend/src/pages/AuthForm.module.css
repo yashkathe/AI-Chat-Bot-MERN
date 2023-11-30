@@ -55,9 +55,6 @@
 
 .button{
     box-sizing: border-box;
-}
-
-.button > button {
     border-radius: 10px;
     height: 2.6rem;
     border: 0;
@@ -67,6 +64,6 @@
     font-size: 1rem;
 }
 
-.button > button:hover {
+.button:hover {
 	background-color: #6365c7;
 }

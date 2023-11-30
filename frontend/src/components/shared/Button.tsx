@@ -1,19 +1,17 @@
 type Props = {
-    buttonLabel: string
-    type: "button" | "submit" | "reset"
-    className?: string
-}
+	buttonLabel: string;
+	type: "button" | "submit" | "reset";
+	className?: string;
+};
 
-import styles from './Button.module.css' 
+import styles from "./Button.module.css";
 
-const Button = (props:Props ) => {
-  return (
-    <div className={`${styles.button} ${props.className}`}>
-        <button type={props.type}>
-            {props.buttonLabel}
-        </button>
-    </div>
-  )
-}
+const Button = (props: Props) => {
+	return (
+		<button type={props.type} className={`${styles.button} ${props.className}`}>
+			{props.buttonLabel}
+		</button>
+	);
+};
 
-export default Button
+export default Button;
