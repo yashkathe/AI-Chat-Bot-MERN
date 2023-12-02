@@ -1,18 +1,28 @@
 import express from "express";
 
-const userRoutes = express.Router();
+import {
+	getAllUsers,
+	userSignUp,
+	userLogin,
+	verifyUserStatus,
+} from "../controllers/user-controllers.js";
 
-import { getAllUsers, userSignUp, userLogin } from "../controllers/user-controllers.js";
 import {
 	loginValidator,
 	signUpValidator,
 	validate,
 } from "../utils/validators.js";
 
+import { verifyToken } from "../utils/token-manager.js";
+
+const userRoutes = express.Router(); 
+
 userRoutes.get("/", getAllUsers);
 
 userRoutes.post("/signup", validate(signUpValidator), userSignUp);
 
 userRoutes.post("/login", validate(loginValidator), userLogin);
+
+userRoutes.get("/auth-status", verifyToken, verifyUserStatus); // check if user cookies are valid so he doesnt have to login again
 
 export default userRoutes;

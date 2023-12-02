@@ -1,4 +1,4 @@
-import { userLogin } from "../../helpers/api-functions";
+import { userLogin, getAuthStatus } from "../../helpers/api-functions";
 import {
 	ReactNode,
 	createContext,
@@ -28,13 +28,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const [isLoggedIn, setisLoggedIn] = useState(false);
 
 	// check if user cookies are valid and then skip login
-	useEffect(() => {});
+	useEffect(() => {
+		const checkAuthStatus = async () => {
+			const data = await getAuthStatus();
+			if (data) {
+				setUser({ email: data.email, name: data.name });
+				setisLoggedIn(true);
+                console.log(user)
+			}
+		};
+        checkAuthStatus()
+	}, []);
 
 	const login = async (email: string, password: string) => {
 		const data = await userLogin(email, password);
 		if (data) {
 			setUser({ email: data.email, name: data.name });
-            setisLoggedIn(true)
+			setisLoggedIn(true);
 		}
 	};
 

@@ -1,3 +1,4 @@
+import {useState} from "react";
 import { Link } from "react-router-dom";
 
 import bot2 from "/page-photos/robot-2.png";
@@ -9,6 +10,7 @@ import styles from "./AuthForm.module.css";
 import Button from '../components/shared/Button';
 
 const Signup = () => {
+    const [buttonName, setButtonName] = useState('Login')
 	return (
 		<div className={styles.parent}>
 			<div>
@@ -19,7 +21,7 @@ const Signup = () => {
 				/>
 			</div>
 			<div>
-				<h2>Create your account</h2>
+				<h2>Create New account</h2>
 				<div className={styles.form}>
 					<FormLabel
 						className={styles.auth_label}
@@ -81,7 +83,7 @@ const Signup = () => {
 						inputPH='Confirm Password'
 					/>
 
-                    <Button buttonLabel="SignUp" type="submit" className={styles.button}/>
+                    <Button buttonLabel={buttonName} type="submit" className={styles.button}/>
 				</div>
 				<p>
 					Already have an account ? <Link to='/login'>Login </Link> now{" "}

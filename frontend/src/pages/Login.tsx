@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,8 @@ import { useAuth } from "../context/context";
 
 const Login = () => {
 
+    const [buttonName, setButtonName] = useState('Login')
+
     const navigate = useNavigate()
 
 	const auth = useAuth();
@@ -31,11 +33,14 @@ const Login = () => {
 		const password = formData.get("password") as string;
 
 		try {
+            setButtonName('Loading ...')
 			toast.loading("Signing in ..", { id: "login" });
 			await auth?.login(email, password);
+            setButtonName('Login')
             toast.success("Signed in successfully", { id: "login" })
             navigate('/chat')
 		} catch (error: any) {
+            setButtonName('Login')
             toast.error(error.message, { id: "login" })
 			console.log(error, 'error');
 		}
@@ -81,7 +86,7 @@ const Login = () => {
 						inputPH='Password'
 					/>
 
-					<Button buttonLabel='Login' type='submit' className={styles.button} />
+					<Button buttonLabel={buttonName} type='submit' className={styles.button} />
 				</form>
 				<p>
 					Don't have an account ? <Link to='/signup'>Create One </Link> now{" "}

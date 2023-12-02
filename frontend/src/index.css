@@ -11,7 +11,7 @@ body {
 	padding: 0;
 	background: #05101c;
 	color: white;
-	font-family: "Roboto Slab", serif;
+	font-family: "Roboto Slab", serif !important;
 }
 
 a {
@@ -40,3 +40,18 @@ input:focus {
 	outline: none;
 	box-shadow: none;
 }
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
