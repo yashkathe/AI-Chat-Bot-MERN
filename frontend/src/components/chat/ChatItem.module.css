@@ -1,0 +1,35 @@
+.parent {
+	display: flex;
+	flex-direction: row;
+	margin: 2rem;
+	box-sizing: border-box;
+	padding: 1rem;
+	border-radius: 15px;
+}
+
+.bot_parent {
+	background-color: #004d5612;
+}
+
+.user_parent {
+	background-color: #004d56;
+}
+
+.avatar > img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.avatar {
+	margin: 0 2% 0 1%;
+	width: 4%;
+	padding: 2.5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 30px;
+}
+
+.user_avatar {
+	background-color: black;
+}

@@ -34,10 +34,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 			if (data) {
 				setUser({ email: data.email, name: data.name });
 				setisLoggedIn(true);
-                console.log(user)
 			}
 		};
-        checkAuthStatus()
+		checkAuthStatus();
 	}, []);
 
 	const login = async (email: string, password: string) => {
