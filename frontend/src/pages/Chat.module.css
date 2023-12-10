@@ -1,22 +1,69 @@
-.parent{
-    display: flex;
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+.parent {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	width: 100%;
+	height: calc(100vh - 7vh);
+	box-sizing: border-box;
 }
 
-.chat{
-    padding: 4rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: center;
+.chat {
+	padding: 0vh 4rem 0rem 4rem;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex: 8;
+	flex-direction: column;
+	border-radius: 15px;
+	overflow: scroll;
+	overflow-x: hidden;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+}
+
+.inputContainer {
+	box-sizing: border-box;
+    margin-bottom: 1vh;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex: 1;
+    align-items: center;
+	justify-content: center;
+}
+
+.inputContainer > div {
+    height: 70%;
+	width: 90%;
+	background-color: #111b27;
+	display: flex;
+	align-items: center;
+	justify-content: center;
     border-radius: 15px;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    box-sizing: border-box;
+    padding: 1.5rem;
+}
+
+.inputContainer > div > input {
+    height: 100%;
+    width: 100%;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent !important;
+    /* text-align: center; */
+    color: white;
+    font-size: 1.3rem;
+    border: none;
+
+}
+
+.icon {
+	height: 2.2rem;
+}
+
+.icon > img {
+	height: 100%;
+	width: auto;
 }

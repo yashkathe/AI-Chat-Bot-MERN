@@ -18,7 +18,7 @@ const ChatItem = (props: Props) => {
 			<div className={`${styles.avatar}`}>
 				<img src={botIcon} alt='chat bot icon'></img>
 			</div>
-			<div>
+			<div className={styles.msg}>
 				<p>{props.content}</p>
 			</div>
 		</div>
@@ -30,7 +30,7 @@ const ChatItem = (props: Props) => {
 				{auth?.user?.name[0]}
 				{auth?.user?.name.split(" ")[1][0]}
 			</div>
-			<div>
+			<div className={styles.msg}>
 				<p>{props.content}</p>
 			</div>
 		</div>

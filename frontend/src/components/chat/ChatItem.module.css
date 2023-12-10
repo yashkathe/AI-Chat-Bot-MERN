@@ -5,6 +5,8 @@
 	box-sizing: border-box;
 	padding: 1rem;
 	border-radius: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .bot_parent {
@@ -22,7 +24,8 @@
 
 .avatar {
 	margin: 0 2% 0 1%;
-	width: 4%;
+	width: 3rem;
+    height: 3rem;
 	padding: 2.5px;
 	display: flex;
 	align-items: center;
@@ -32,4 +35,10 @@
 
 .user_avatar {
 	background-color: black;
+}
+
+.msg{
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
 }
