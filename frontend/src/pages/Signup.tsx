@@ -1,5 +1,5 @@
-import {useState} from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import bot2 from "/page-photos/robot-2.png";
 
@@ -9,8 +9,23 @@ import FormLabel from "../components/auth/FormLabel";
 import styles from "./AuthForm.module.css";
 import Button from '../components/shared/Button';
 
+import { useAuth } from "../context/context";
+
+import axios from 'axios'
+axios.defaults.baseURL = "http://localhost:5001/api";
+axios.defaults.withCredentials = true; // Enable sending credentials (e.g., cookies) in cross-origin requests
+
 const Signup = () => {
     const [buttonName, setButtonName] = useState('Login')
+
+    const navigate = useNavigate
+
+    const auth = useAuth()
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+    }
+
 	return (
 		<div className={styles.parent}>
 			<div>

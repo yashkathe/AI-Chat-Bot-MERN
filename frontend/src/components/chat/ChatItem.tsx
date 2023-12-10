@@ -1,5 +1,3 @@
-import React from "react";
-
 import styles from "./ChatItem.module.css";
 
 import botIcon from "/logos/bot.png";
