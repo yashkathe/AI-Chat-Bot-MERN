@@ -34,7 +34,12 @@ const ChatItem = (props: Props) => {
 		</div>
 	);
 
-	return props.role === "assistant" ? botMsg : userMsg;
+	return (
+		<>
+			{props.role === "assistant" && botMsg}
+			{props.role === "user" && userMsg}
+		</>
+	);
 };
 
 export default ChatItem;

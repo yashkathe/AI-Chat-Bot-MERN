@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import styles from "./Chat.module.css";
@@ -7,6 +7,8 @@ import { postChatRequest } from "../../helpers/api-functions";
 
 import sendIcon from "/logos/send-icon.png";
 import noMsgBot from "/logos/no-msg2.png";
+import Spinner from "../components/shared/Spinner";
+import ChatLoading from "../components/chat/ChatLoading";
 
 type Message = {
 	role: "user" | "assistant";
@@ -15,8 +17,17 @@ type Message = {
 
 const Chat = () => {
 	const [chatMessages, setChatMessages] = useState<Message[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const inputRef = useRef<HTMLInputElement | null>(null);
+	const messageContainerRef = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		if (messageContainerRef.current) {
+			messageContainerRef.current.scrollTop =
+				messageContainerRef.current.scrollHeight;
+		}
+	}, [chatMessages]);
 
 	const sendMsgHandler = async () => {
 		const content = inputRef.current?.value as string;
@@ -26,9 +37,11 @@ const Chat = () => {
 		const newMessage: Message = { role: "user", content };
 		setChatMessages((prev) => [...prev, newMessage]);
 
-        // send request to backend
-        const chatData = await postChatRequest(content)
-        setChatMessages([...chatData.chats])
+		// send request to backend
+		setIsLoading(true);
+		const chatData = await postChatRequest(content);
+		setChatMessages([...chatData.chats]);
+		setIsLoading(false);
 	};
 
 	const variants = {
@@ -67,8 +80,10 @@ const Chat = () => {
 
 	return (
 		<div className={styles.parent}>
-			<div className={styles.chat}>
-				{chatMessages.length === 0 ? placeHolder : chats}
+			<div className={styles.chat} ref={messageContainerRef}>
+				{chatMessages.length === 0 && placeHolder}
+				{chatMessages.length !== 0 && chats}
+				{isLoading && <ChatLoading/>}
 			</div>
 			<div className={styles.inputContainer}>
 				<div>
