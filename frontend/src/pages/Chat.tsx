@@ -3,19 +3,32 @@ import { motion } from "framer-motion";
 
 import styles from "./Chat.module.css";
 import ChatItem from "../components/chat/ChatItem";
+import { postChatRequest } from "../../helpers/api-functions";
 
 import sendIcon from "/logos/send-icon.png";
 import noMsgBot from "/logos/no-msg2.png";
 
+type Message = {
+	role: "user" | "assistant";
+	content: string;
+};
+
 const Chat = () => {
-	const [chatMessages, setChatMessages] = useState([]);
+	const [chatMessages, setChatMessages] = useState<Message[]>([]);
 
 	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const sendMsgHandler = async () => {
-		console.log(inputRef.current?.value);
+		const content = inputRef.current?.value as string;
 
 		if (inputRef.current) inputRef.current.value = "";
+
+		const newMessage: Message = { role: "user", content };
+		setChatMessages((prev) => [...prev, newMessage]);
+
+        // send request to backend
+        const chatData = await postChatRequest(content)
+        setChatMessages([...chatData.chats])
 	};
 
 	const variants = {
@@ -23,7 +36,7 @@ const Chat = () => {
 			y: [0, -10, 0, -10, 0],
 			transition: {
 				type: "spring",
-				y: { repeat: Infinity, duration: 4 },
+				y: { repeat: Infinity, duration: 4, stiffness: 100, damping: 5 },
 			},
 		},
 	};
