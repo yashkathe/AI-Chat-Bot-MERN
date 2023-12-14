@@ -44,7 +44,33 @@ export const generateChatCompletion = async (
 
 		return res.status(200).json({ chats: user.chats });
 	} catch (error) {
-        console.log(error)
+		console.log(error);
 		return res.status(500).json({ message: error.message });
+	}
+};
+
+export const getAllChats = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	try {
+		const user = await User.findById(res.locals.jwtData.id); // get variable stored in previous middleware
+        
+		if (!user)
+			return res.status(401).json({
+				message: "ERROR",
+				cause: "User doesn't exist or token malfunctioned",
+			});
+
+		if (user._id.toString() !== res.locals.jwtData.id) {
+			return res
+				.status(401)
+				.json({ message: "ERROR", cause: "Permissions didn't match" });
+		}
+		return res.status(200).json({ message: "OK", chats: user.chats });
+	} catch (err) {
+		console.log(err);
+		return res.status(200).json({ message: "ERROR", cause: err.message });
 	}
 };

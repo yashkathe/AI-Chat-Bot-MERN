@@ -36,7 +36,7 @@
 .inputContainer > div {
 	height: 70%;
 	width: 90%;
-	background-color: #111b27;
+	background-color: #16202e;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -56,6 +56,10 @@
 	color: white;
 	font-size: 1.3rem;
 	border: none;
+}
+
+.inputContainer > div > input:disabled {
+    cursor:not-allowed;
 }
 
 .icon {

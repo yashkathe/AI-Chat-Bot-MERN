@@ -1,14 +1,17 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 
 import styles from "./Chat.module.css";
 import ChatItem from "../components/chat/ChatItem";
-import { postChatRequest } from "../../helpers/api-functions";
+import { getAllChats, postChatRequest } from "../../helpers/api-functions";
 
 import sendIcon from "/logos/send-icon.png";
 import noMsgBot from "/logos/no-msg2.png";
 import Spinner from "../components/shared/Spinner";
 import ChatLoading from "../components/chat/ChatLoading";
+
+import { useAuth } from "../context/context";
+import SpinnerOverlay from "../components/shared/SpinnerOverlay";
 
 type Message = {
 	role: "user" | "assistant";
@@ -16,8 +19,11 @@ type Message = {
 };
 
 const Chat = () => {
+	const auth = useAuth();
+
 	const [chatMessages, setChatMessages] = useState<Message[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isLoadingChats, setIsLoadingChats] = useState<boolean>(true);
 
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const messageContainerRef = useRef<HTMLDivElement | null>(null);
@@ -28,6 +34,22 @@ const Chat = () => {
 				messageContainerRef.current.scrollHeight;
 		}
 	}, [chatMessages]);
+
+	useLayoutEffect(() => {
+		const getChats = async () => {
+			try {
+				if (auth?.isLoggedIn && auth.user) {
+					const data = await getAllChats();
+					setChatMessages([...data.chats]);
+				}
+				setIsLoadingChats(false);
+			} catch (err) {
+				console.log(err);
+				setIsLoadingChats(false);
+			}
+		};
+		getChats();
+	}, []);
 
 	const sendMsgHandler = async () => {
 		const content = inputRef.current?.value as string;
@@ -81,13 +103,18 @@ const Chat = () => {
 	return (
 		<div className={styles.parent}>
 			<div className={styles.chat} ref={messageContainerRef}>
-				{chatMessages.length === 0 && placeHolder}
-				{chatMessages.length !== 0 && chats}
-				{isLoading && <ChatLoading/>}
+				{isLoadingChats && <SpinnerOverlay />}
+				{!isLoadingChats && (
+					<>
+						{chatMessages.length === 0 && placeHolder}
+						{chatMessages.length !== 0 && chats}
+						{isLoading && <ChatLoading />}
+					</>
+				)}
 			</div>
 			<div className={styles.inputContainer}>
 				<div>
-					<input type='text' maxLength={1500} ref={inputRef} />
+					<input type='text' maxLength={1500} ref={inputRef} disabled={isLoadingChats || isLoading ? true : false}/>
 					<button className={styles.icon} onClick={sendMsgHandler}>
 						<img alt='icon' src={sendIcon} />
 					</button>

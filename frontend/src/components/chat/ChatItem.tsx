@@ -38,7 +38,7 @@ const ChatItem = (props: Props) => {
 								{block}
 							</SyntaxHighlighter>
 						) : (
-							<p>{block}</p>
+							<p key={idx}>{block}</p>
 						)
 					)}
 			</div>

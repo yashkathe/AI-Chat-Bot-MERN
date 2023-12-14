@@ -1,7 +1,7 @@
 import express from "express";
 import { verifyToken } from "../utils/token-manager.js";
 import { chatCompletionValidator, validate } from "../utils/validators.js";
-import { generateChatCompletion } from "../controllers/chat-controllers.js";
+import { generateChatCompletion, getAllChats } from "../controllers/chat-controllers.js";
 
 const chatRoutes = express.Router();
 
@@ -19,5 +19,12 @@ chatRoutes.post(
 	verifyToken,
 	generateChatCompletion
 );
+
+chatRoutes.get(
+	"/all-chats",
+	verifyToken,
+	getAllChats
+);
+
 
 export default chatRoutes;
