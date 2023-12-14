@@ -1,3 +1,11 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+import {
+	detectCodeSnippet,
+	isCodeBlock,
+} from "../../../helpers/extract-code-snippet";
+
 import styles from "./ChatItem.module.css";
 
 import botIcon from "/logos/bot.png";
@@ -9,6 +17,7 @@ type Props = {
 };
 
 const ChatItem = (props: Props) => {
+	const messageBlocks = detectCodeSnippet(props.content);
 	const auth = useAuth();
 
 	const botMsg = (
@@ -17,7 +26,21 @@ const ChatItem = (props: Props) => {
 				<img src={botIcon} alt='chat bot icon'></img>
 			</div>
 			<div className={styles.msg}>
-				<p>{props.content}</p>
+				{!messageBlocks && <p>{props.content}</p>}
+				{messageBlocks &&
+					messageBlocks.length !== 0 &&
+					messageBlocks.map((block, idx) =>
+						isCodeBlock(block) ? (
+							<SyntaxHighlighter
+								style={coldarkDark}
+								language='javascript'
+								key={idx}>
+								{block}
+							</SyntaxHighlighter>
+						) : (
+							<p>{block}</p>
+						)
+					)}
 			</div>
 		</div>
 	);
