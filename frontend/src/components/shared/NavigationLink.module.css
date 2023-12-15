@@ -1,19 +1,14 @@
 .link {
 	margin: 0 1.5%;
 	font-size: 1.2rem;
-    padding: 4px 12px ;
+    padding: 8px 12px ;
     border-radius: 10px;
-    background-color: #00fffba2;
+    background-color: #00fffb9f;
     color: #05101c;
-    letter-spacing: 1px;
 }
 
 .pending {
 	height: 100%;
 	width: auto;
     color: #05101c;
-}
-
-.active {
-	text-decoration: underline !important;
 }

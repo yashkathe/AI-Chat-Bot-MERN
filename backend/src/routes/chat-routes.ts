@@ -1,7 +1,7 @@
 import express from "express";
 import { verifyToken } from "../utils/token-manager.js";
 import { chatCompletionValidator, validate } from "../utils/validators.js";
-import { generateChatCompletion, getAllChats } from "../controllers/chat-controllers.js";
+import { deleteAllChats, generateChatCompletion, getAllChats } from "../controllers/chat-controllers.js";
 
 const chatRoutes = express.Router();
 
@@ -26,5 +26,10 @@ chatRoutes.get(
 	getAllChats
 );
 
+chatRoutes.delete(
+    "/delete-all-chats",
+    verifyToken,
+    deleteAllChats
+)
 
 export default chatRoutes;

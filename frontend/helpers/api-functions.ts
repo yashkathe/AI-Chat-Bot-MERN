@@ -27,8 +27,10 @@ export const getAuthStatus = async () => {
 };
 
 export const postChatRequest = async (message: string) => {
-	try {
+    console.log('hello' , message)
+    try {
 		const response = await axios.post("/chat/new", { message });
+		console.log(response);
 		if (response.status !== 200) {
 			throw new Error();
 		}
@@ -53,3 +55,18 @@ export const getAllChats = async () => {
 		throw new Error(err.message);
 	}
 };
+
+export const deleteAllChats = async () => {
+	try {
+		const response = await axios.delete("/chat/delete-all-chats");
+		if (response.status !== 200) {
+			throw new Error();
+		}
+		const data = await response.data;
+		return data;
+	} catch (err: any) {
+		console.log(err);
+		throw new Error(err.message);
+	}
+};
+

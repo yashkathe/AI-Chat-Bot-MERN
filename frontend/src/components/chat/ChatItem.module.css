@@ -2,9 +2,9 @@
 	display: flex;
 	flex-direction: row;
     align-items: center;
-	margin: 2rem;
+	margin: 1rem;
 	box-sizing: border-box;
-	padding: 1rem;
+	padding: 5px;
 	border-radius: 15px;
 }
 

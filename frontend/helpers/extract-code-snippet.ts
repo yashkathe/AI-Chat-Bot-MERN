@@ -9,7 +9,8 @@ export const isCodeBlock = (message: string): boolean => {
 	if (
 		(message.includes("{") && message.includes("}")) ||
 		(message.includes("[") && message.includes("]")) ||
-		message.includes("#")
+		message.includes("#") || 
+		message.includes(";")
 	) {
 		return true;
 	}

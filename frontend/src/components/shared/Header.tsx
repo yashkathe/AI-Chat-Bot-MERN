@@ -1,8 +1,8 @@
-import Logo from "./shared/Logo";
+import Logo from "./Logo";
 
 import styles from "./Header.module.css";
-import { useAuth } from "../context/context";
-import NavigationLink from "./shared/NavigationLink";
+import { useAuth } from "../../context/context";
+import NavigationLink from "./NavigationLink";
 
 const Header = () => {
 	const auth = useAuth();
