@@ -1,0 +1,21 @@
+name: Push Code to Frontend Branch
+on:
+  push:
+    paths:
+      - frontend/**
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@master
+
+    - name: Deploy Frontend Code
+      uses: s0/git-publish-subdir-action@develop
+      env:
+        REPO: self
+        BRANCH: frontend
+        FOLDER: frontend
+        GITHUB_TOKEN: ${{ secrets.WORKFLOW1 }}
