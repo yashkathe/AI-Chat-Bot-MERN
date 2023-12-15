@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
+import {useNavigate} from 'react-router-dom'
 import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "./Chat.module.css";
@@ -25,6 +26,7 @@ type Message = {
 
 const Chat = () => {
 	const auth = useAuth();
+    const navigate = useNavigate()
 
 	const [chatMessages, setChatMessages] = useState<Message[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -56,6 +58,12 @@ const Chat = () => {
 		};
 		getChats();
 	}, [auth]);
+
+    useEffect(() => {
+        if(!auth?.user){
+            return navigate("/login")
+        }
+    } , [auth])
 
 	const sendMsgHandler = async () => {
 		const content = inputRef.current?.value as string;

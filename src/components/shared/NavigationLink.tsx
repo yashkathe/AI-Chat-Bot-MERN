@@ -20,7 +20,9 @@ const NavigationLink = (props: Props) => {
 		<motion.div
 			className={styles.link}
 			variants={linkVariant}
-			whileHover='whileHover'>
+			whileHover='whileHover'
+            onClick={props.onClick}
+            >
 			<NavLink
 				to={props.to}
 				className={({ isActive, isPending }) =>

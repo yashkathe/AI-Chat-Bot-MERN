@@ -70,3 +70,19 @@ export const deleteAllChats = async () => {
 	}
 };
 
+export const logoutUser = async () => {
+	try {
+        console.log('hello')
+		const response = await axios.get("/user/logout");
+		if (response.status !== 200) {
+			throw new Error();
+		}
+		const data = await response.data;
+		return data;
+	} catch (err: any) {
+		console.log(err);
+		throw new Error(err.message);
+	}
+};
+
+
