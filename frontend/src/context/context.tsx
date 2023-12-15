@@ -1,4 +1,4 @@
-import { userLogin, getAuthStatus } from "../../helpers/api-functions";
+import { userLogin, getAuthStatus, logoutUser } from "../../helpers/api-functions";
 import {
 	ReactNode,
 	createContext,
@@ -49,7 +49,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
 	const signup = async (name: string, email: string, password: string) => {};
 
-	const logout = async () => {};
+	const logout = async () => {
+        await logoutUser()
+        setisLoggedIn(false)
+        setUser(null)
+        window.location.reload() // reload webpage
+    };
 
 	const value = {
 		user,

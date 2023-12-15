@@ -5,6 +5,7 @@ import {
 	userSignUp,
 	userLogin,
 	verifyUserStatus,
+    logoutUser
 } from "../controllers/user-controllers.js";
 
 import {
@@ -24,5 +25,7 @@ userRoutes.post("/signup", validate(signUpValidator), userSignUp);
 userRoutes.post("/login", validate(loginValidator), userLogin);
 
 userRoutes.get("/auth-status", verifyToken, verifyUserStatus); // check if user cookies are valid so he doesnt have to login again
+
+userRoutes.get("/logout", verifyToken, logoutUser)
 
 export default userRoutes;
