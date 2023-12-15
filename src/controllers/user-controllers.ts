@@ -157,3 +157,42 @@ export const verifyUserStatus = async (
 			.json({ message: "ERROR", cause: err.message});
 	}
 };
+
+export const logoutUser = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	try {
+		const user = await User.findById(res.locals.jwtData.id); // get variable stored in previous middleware
+
+		if (!user)
+			return res.status(401).json({
+				message: "ERROR",
+				cause: "User doesn't exist or token malfunctioned",
+			});
+
+		if (user._id.toString() !== res.locals.jwtData.id) {
+			return res
+				.status(401)
+				.json({ message: "ERROR", cause: "Permissions didn't match" });
+		}
+
+        res.clearCookie(COOKIE_NAME),
+        {
+            path: "/", //cookie directory in browser
+            domain: process.env.DOMAIN, // our website domain
+            httpOnly: true,
+            signed: true,
+        };
+
+		return res
+			.status(200)
+			.json({ message: "OK", name: user.name, email: user.email });
+	} catch (err) {
+		console.log(err);
+		return res
+			.status(200)
+			.json({ message: "ERROR", cause: err.message});
+	}
+};
