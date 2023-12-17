@@ -1,0 +1,14 @@
+.parent{
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.ui1{
+    width: 100%;
+}
+
+.ui2{
+    width: 80%;
+}
+

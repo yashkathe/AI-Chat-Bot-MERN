@@ -3,7 +3,8 @@
 	flex-direction: column;
 	flex: 1;
 	width: 100%;
-	height: calc(100vh - 7vh);
+	height: calc(100vh);
+    padding-top: 7vh;
 	box-sizing: border-box;
 }
 
