@@ -13,6 +13,25 @@ export const userLogin = async (email: string, password: string) => {
 	}
 };
 
+export const userSignup = async (
+	name: string,
+	email: string,
+	password: string
+) => {
+	try {
+		const response = await axios.post("/user/signup", {
+			name,
+			email,
+			password,
+		});
+		const data = await response.data;
+		return data;
+	} catch (err: any) {
+        console.log(err)
+		throw new Error(`Error! Cannot Signup. ${err.message}`);
+	}
+};
+
 export const getAuthStatus = async () => {
 	try {
 		const response = await axios.get("/user/auth-status");
@@ -27,8 +46,8 @@ export const getAuthStatus = async () => {
 };
 
 export const postChatRequest = async (message: string) => {
-    console.log('hello' , message)
-    try {
+	console.log("hello", message);
+	try {
 		const response = await axios.post("/chat/new", { message });
 		console.log(response);
 		if (response.status !== 200) {
@@ -72,7 +91,6 @@ export const deleteAllChats = async () => {
 
 export const logoutUser = async () => {
 	try {
-        console.log('hello')
 		const response = await axios.get("/user/logout");
 		if (response.status !== 200) {
 			throw new Error();
@@ -84,5 +102,3 @@ export const logoutUser = async () => {
 		throw new Error(err.message);
 	}
 };
-
-

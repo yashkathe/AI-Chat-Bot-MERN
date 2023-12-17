@@ -56,7 +56,7 @@ Before running the application, ensure you have the following installed:
 
     Modify the `.env.txt` file in the `backend` directory and add the following variables and rename it to `.env`:
 
-        ```bas
+        ```bash
         OPENAI_API_KEY=your_openai_api_key
         MONGODB_URI=your_mongodb_uri
         ```
