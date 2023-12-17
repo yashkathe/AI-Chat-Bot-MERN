@@ -4,7 +4,7 @@
 	align-items: center;
 	justify-content: center;
 	width: 100vw;
-	min-height: 93vh;
+	min-height: 100vh;
 }
 
 .parent > div:nth-child(1) {
