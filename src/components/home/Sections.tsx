@@ -63,13 +63,9 @@ const Section = (props: Props) => {
 				{props.children}
 			</motion.div>
 			<div className={styles.div2}>
-				<motion.div
-					className={`${styles.img} ${props.imgStyle}`}
-					variants={props.animateImg ? botVariants : undefined}
-					initial='initial'
-					animate='animate'>
+				<div className={`${styles.img} ${props.imgStyle}`}>
 					<img src={props.src} alt={props.alt} />
-				</motion.div>
+				</div>
 			</div>
 		</div>
 	);
