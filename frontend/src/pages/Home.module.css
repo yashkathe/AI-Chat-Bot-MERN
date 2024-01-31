@@ -1,14 +1,45 @@
-.parent{
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    height: 100vh;
+.parent {
+	scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+	height: 100vh;
+	width: 100%;
 }
 
-.ui1{
-    width: 100%;
+.parent h1 {
+	font-weight: 1000;
+	font-size: 3rem;
 }
 
-.ui2{
-    width: 80%;
+.parent h2 {
+	color: #00ced1;
 }
 
+.parent p {
+	font-weight: 300;
+	font-size: 1.3rem;
+	word-spacing: 0.4rem;
+	line-height: 2;
+}
+
+.highlight {
+	color: #00ced1 !important;
+	margin: 0;
+}
+
+.btn {
+	background-color: #00ced1;
+    padding: 1rem 2rem;
+    color:black;
+    border-radius: 10px;
+    margin-top:2rem;
+    font-size:1.2rem;
+    font-weight:400
+}
+
+.ui1 {
+	max-width: 100%;
+}
+
+.ui2 {
+	width: 80%;
+}
