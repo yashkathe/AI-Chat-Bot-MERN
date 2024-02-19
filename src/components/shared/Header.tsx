@@ -19,8 +19,8 @@ const Header = () => {
 	} else {
 		links = (
 			<>
-				<NavigationLink to='/login' text='Login'></NavigationLink>
-				<NavigationLink to='/signup' text='SignUp'></NavigationLink>
+				<NavigationLink to='/login' text='Sign In'></NavigationLink>
+				<NavigationLink to='/signup' text='Create an Account'></NavigationLink>
 			</>
 		);
 	}

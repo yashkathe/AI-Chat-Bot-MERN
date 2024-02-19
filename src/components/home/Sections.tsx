@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 
 import styles from "./Sections.module.css";
 
@@ -14,23 +14,13 @@ type Props = {
 const Section = (props: Props) => {
 	const botVariants = {
 		initial: {
-			x: "70",
-			opacity: 0,
-			transition: {
-				duration: 1,
-			},
+			opacity: 0
 		},
 		animate: {
-			x: 0,
-			y: [15, -15, 15],
 			opacity: 1,
 			transition: {
-				duration: 2,
-				y: {
-					duration: 4,
-					repeat: "Infinity",
-					delay: 2,
-				},
+				delay: 1.5,
+				duration: 2.5,
 			},
 		},
 	};
@@ -62,11 +52,17 @@ const Section = (props: Props) => {
 				className={styles.div1}>
 				{props.children}
 			</motion.div>
-			<div className={styles.div2}>
+			<motion.div className={styles.div2}>
 				<div className={`${styles.img} ${props.imgStyle}`}>
-					<img src={props.src} alt={props.alt} />
+					<motion.img
+						variants={botVariants}
+						initial='initial'
+						animate='animate'
+						src={props.src}
+						alt={props.alt}
+					/>
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	);
 };
