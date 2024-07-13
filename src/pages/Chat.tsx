@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "./Chat.module.css";
@@ -26,14 +26,14 @@ type Message = {
 
 const Chat = () => {
 	const auth = useAuth();
-    const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const [chatMessages, setChatMessages] = useState<Message[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [isLoadingChats, setIsLoadingChats] = useState<boolean>(true);
 	const [deleteChatToggle, setDeleteChatToggle] = useState<boolean>(false);
 
-	const inputRef = useRef<HTMLInputElement | null>(null);
+	const inputRef = useRef<HTMLTextAreaElement | null>(null);
 	const messageContainerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -59,11 +59,11 @@ const Chat = () => {
 		getChats();
 	}, [auth]);
 
-    useEffect(() => {
-        if(!auth?.user){
-            return navigate("/login")
-        }
-    } , [auth])
+	useEffect(() => {
+		if (!auth?.user) {
+			return navigate("/login");
+		}
+	}, [auth]);
 
 	const sendMsgHandler = async () => {
 		const content = inputRef.current?.value as string;
@@ -206,12 +206,13 @@ const Chat = () => {
 							)}
 						</AnimatePresence>
 					</div>
-					<input
-						type='text'
+					<textarea
+						className={styles.textArea}
 						maxLength={1500}
 						ref={inputRef}
+                        rows={1}
 						disabled={isLoadingChats || isLoading ? true : false}
-                        placeholder="Enter your query here"
+						placeholder='Enter your query here'
 					/>
 					<button className={styles.icon} onClick={sendMsgHandler}>
 						<img alt='icon' src={sendIcon} />

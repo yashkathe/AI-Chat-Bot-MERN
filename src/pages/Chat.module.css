@@ -4,7 +4,7 @@
 	flex: 1;
 	width: 100%;
 	height: calc(100vh);
-    padding-top: 7vh;
+	padding-top: 7vh;
 	box-sizing: border-box;
 }
 
@@ -34,8 +34,8 @@
 	justify-content: center;
 }
 
-.inputContainer > div {
-	height: 70%;
+.inputArea {
+    max-height: auto;
 	width: 90%;
 	background-color: #16202e;
 	display: flex;
@@ -46,26 +46,27 @@
 	padding: 1.5rem;
 }
 
-.inputContainer > div > input {
-	height: 100%;
+.textArea {
+    min-height: fit-content;
+    max-height: auto;
+	resize: vertical;
 	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	background-color: transparent !important;
-	/* text-align: center; */
 	color: white;
 	font-size: 1.3rem;
 	border: none;
 }
 
-.inputContainer > div > input::placeholder {
-    text-align: center;
+.inputContainer > div > textarea:active {
+	outline: none;
 }
 
+.inputContainer > div > textarea::placeholder {
+	text-align: center;
+}
 
-.inputContainer > div > input:disabled {
-    cursor:not-allowed;
+.inputContainer > div > textarea:disabled {
+	cursor: not-allowed;
 }
 
 .icon {
@@ -86,44 +87,43 @@
 	justify-content: center;
 }
 
-.no_msgs > h3
-{   
-    font-size: 1.8rem;
-    color: #e8ebe3e3;
+.no_msgs > h3 {
+	font-size: 1.8rem;
+	color: #e8ebe3e3;
 }
 
-.no_msgs > p{
-    font-size: 1.2rem;
-    color: #e8ebe3e3;
+.no_msgs > p {
+	font-size: 1.2rem;
+	color: #e8ebe3e3;
 }
 
-.no_msg_logo{
-    height: 10rem;
-    margin: 5rem 0;
+.no_msg_logo {
+	height: 10rem;
+	margin: 5rem 0;
 }
 
 .no_msg_logo > img {
-    max-height: 100%;
-    max-width: auto;
+	max-height: 100%;
+	max-width: auto;
 }
 
-.inputArea{
-    position: relative;
+.inputArea {
+	position: relative;
 }
 
-.eraseMsgs{
-    position: absolute;
-    bottom: 120%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
+.eraseMsgs {
+	position: absolute;
+	bottom: 120%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: auto;
 }
 
-.eraseBtn{
-    background-color: #D2042D;
-    padding: 2px 4px;
-    border-radius: 5px;
-    margin-top: 5px;
+.eraseBtn {
+	background-color: #d2042d;
+	padding: 2px 4px;
+	border-radius: 5px;
+	margin-top: 5px;
 }

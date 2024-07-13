@@ -1,12 +1,9 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-
-import {
-	detectCodeSnippet,
-	isCodeBlock,
-} from "../../../helpers/extract-code-snippet";
+import ReactMarkdown from 'react-markdown'
+import reactGFM from 'remark-gfm'
+import rehypeHighlight from 'rehype-highlight';
 
 import styles from "./ChatItem.module.css";
+import 'highlight.js/styles/atom-one-dark.css';
 
 import botIcon from "/logos/bot.png";
 import { useAuth } from "../../context/context";
@@ -17,7 +14,7 @@ type Props = {
 };
 
 const ChatItem = (props: Props) => {
-	const messageBlocks = detectCodeSnippet(props.content);
+	
 	const auth = useAuth();
 
 	const botMsg = (
@@ -25,22 +22,10 @@ const ChatItem = (props: Props) => {
 			<div className={`${styles.avatar}`}>
 				<img src={botIcon} alt='chat bot icon'></img>
 			</div>
-			<div className={styles.msg}>
-				{!messageBlocks && <p>{props.content}</p>}
-				{messageBlocks &&
-					messageBlocks.length !== 0 &&
-					messageBlocks.map((block, idx) =>
-						isCodeBlock(block) ? (
-							<SyntaxHighlighter
-								style={coldarkDark}
-								language='javascript'
-								key={idx}>
-								{block}
-							</SyntaxHighlighter>
-						) : (
-							<p key={idx}>{block}</p>
-						)
-					)}
+			<div className={`${styles.msg} markdown-body`}>
+                <ReactMarkdown remarkPlugins={[reactGFM]} rehypePlugins={[rehypeHighlight]}>  
+                    {props.content}
+                </ReactMarkdown>
 			</div>
 		</div>
 	);
